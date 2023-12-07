@@ -1,6 +1,5 @@
 const ROOT_CONTAINER_ID = 'root';
 let articulosArray = [];
-// Llamar a la función para agregar los eventos de los botones al principio
 agregarEventosBotones();
 let total = 0;
 
@@ -11,19 +10,18 @@ function agregarArticuloVenta(idArticulo) {
   fetch(`./php/models/Articulo.php?idArticulo=${dataId}`)
     .then(response => response.json())
     .then(datos => {
-      // Obtener el ticket actual o crear uno nuevo si no existe
+      
       const ticketContainer = document.querySelector('.articulos__ticket');
 
       if (!ticketContainer) {
         crearNuevoTicket();
-        // Llamar a la función para agregar los eventos de los botones específicos de este artículo
+        
         agregarEventosBotones();
       }
 
-      // Obtener el cuerpo del ticket actual
+      
       const ticketBody = document.querySelector('.articulos__ticket .ticket__body');
 
-      // Verificar si el artículo ya existe en el ticket
       const existingItem = document.querySelector(`.ticket__data[data-id="${idArticulo}"]`);
 
       if (existingItem) {
